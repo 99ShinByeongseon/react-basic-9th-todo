@@ -24,7 +24,7 @@ const TodoList = () => {
       return;
     }
 
-    setTodos([{ id: crypto.randomUUID(), text: todoText }, ...todos]);
+    setTodos([{ id: crypto.randomUUID(), text: todoText, completed: false }, ...todos]);
 
     setTodoText("");
   };
@@ -34,19 +34,15 @@ const TodoList = () => {
   };
 
   const handleToggleCompleted = (id) => {
-    const updatedTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        return {
-          ...todo,
-          completed: !todo.completed,
-        };
-    }
-
-        return todo;
-    });
+    const updatedTodos = todos.map((todo) => 
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    );
 
     setTodos(updatedTodos);
   };
+
+  // 삼항 연산자
+  // 조건 ? 참일 때 : 거짓일 때
 
   return (
     <div>
