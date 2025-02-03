@@ -24,7 +24,10 @@ const TodoList = () => {
       return;
     }
 
-    setTodos([{ id: crypto.randomUUID(), text: todoText, completed: false }, ...todos]);
+    setTodos([
+      { id: crypto.randomUUID(), text: todoText, completed: false },
+      ...todos,
+    ]);
 
     setTodoText("");
   };
@@ -34,15 +37,24 @@ const TodoList = () => {
   };
 
   const handleToggleCompleted = (id) => {
-    const updatedTodos = todos.map((todo) => 
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id
+          ? {
+              ...todo,
+              completed: !todo.completed,
+            }
+          : todo
+      )
     );
-
-    setTodos(updatedTodos);
   };
-
   // 삼항 연산자
   // 조건 ? 참일 때 : 거짓일 때
+
+  const handleDelete = (id) => {
+    // todo.id가 내가 찾는 id와 같지 않을 때 true를 반환하여 그대로 남겨둠
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  };
 
   return (
     <div>
@@ -60,9 +72,14 @@ const TodoList = () => {
             >
               {text}
             </p>
-            <button onClick={() => handleToggleCompleted(id)}>
-              {completed ? "취소하기" : "완료하기"}
-            </button>
+
+            <div>
+              <button onClick={() => handleToggleCompleted(id)}>
+                {completed ? "취소하기" : "완료하기"}
+              </button>
+
+              <button onClick={() => handleDelete(id)}>삭제하기</button>
+            </div>
           </li>
         ))}
       </ul>
