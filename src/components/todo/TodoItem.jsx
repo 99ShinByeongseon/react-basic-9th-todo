@@ -2,8 +2,8 @@
 const TodoItem = ({
   completed,
   text,
-  handleToggleCompleted,
-  handleDelete,
+  toggleTodoCompleted,
+  deleteTodo,
   id,
 }) => {
   return (
@@ -17,11 +17,11 @@ const TodoItem = ({
       </p>
 
       <div>
-        <button onClick={() => handleToggleCompleted(id)}>
+        <button onClick={() => toggleTodoCompleted(id)}>
           {completed ? "취소하기" : "완료하기"}
         </button>
 
-        <button onClick={() => handleDelete(id)}>삭제하기</button>
+        <button onClick={() => deleteTodo(id)}>삭제하기</button>
       </div>
     </li>
   );

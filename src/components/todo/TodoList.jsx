@@ -1,7 +1,7 @@
 import TodoItem from "./TodoItem";
 
 
-const TodoList = ({todos, handleToggleCompleted, handleDelete}) => {
+const TodoList = ({todos, toggleTodoCompleted, deleteTodo}) => {
   return (
       <ul>
         {todos.map(({ id, text, completed }) => (
@@ -9,8 +9,8 @@ const TodoList = ({todos, handleToggleCompleted, handleDelete}) => {
           key={id} 
           completed={completed} 
           text={text} 
-          handleToggleCompleted={handleToggleCompleted}
-          handleDelete={handleDelete}
+          toggleTodoCompleted={toggleTodoCompleted}
+          deleteTodoe={deleteTodo}
           id={id}
           />
         ))}
