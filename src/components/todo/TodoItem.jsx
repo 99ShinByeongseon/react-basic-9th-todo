@@ -31,15 +31,18 @@ const TodoItemWrapper = styled.li`
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 `;
 
 const TodoItemText = styled.p`
   text-decoration: ${({ $completed }) =>
-   ($completed ? "line-through" : "none")};
+  ($completed ? "line-through" : "none")};
 `
 const TodoItemActions = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.5rem;
 `;
 
@@ -50,6 +53,7 @@ export const ActionButton = styled.button`
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  word-break: keep-all;
 
   &:hover {
     opacity: 0.8;

@@ -3,35 +3,35 @@ import styled from "styled-components";
 import { ActionButton } from "./TodoItem";
 
 const TodoForm = ({ addTodos }) => {
-    const [todoText, setTodoText] = useState("");
+  const [todoText, setTodoText] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    
-        if (!todoText.trim()) {
-          return;
-        }
-    
-        addTodos(todoText);
-        
-        setTodoText("");
-      };
-    
-    const handleChangeTodoText = (e) => {
-        setTodoText(e.target.value);
-      };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!todoText.trim()) {
+      return;
+    }
+
+    addTodos(todoText);
+
+    setTodoText("");
+  };
+
+  const handleChangeTodoText = (e) => {
+    setTodoText(e.target.value);
+  };
 
   return (
     <TodoFormWrapper onSubmit={handleSubmit}>
-      <TodoFormInput 
-      type="text" 
-      value={todoText} 
-      onChange={handleChangeTodoText}
-      placeholder="할 일을 입력하세요"
+      <TodoFormInput
+        type="text"
+        value={todoText}
+        onChange={handleChangeTodoText}
+        placeholder="할 일을 입력하세요"
       />
       <SubmitButton type="submit" $bgColor="#852be6">
         제출하기
-        </SubmitButton>
+      </SubmitButton>
     </TodoFormWrapper>
   );
 };
@@ -39,6 +39,7 @@ const TodoForm = ({ addTodos }) => {
 const TodoFormWrapper = styled.form`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.5rem;
 `;
 
@@ -48,7 +49,7 @@ const TodoFormInput = styled.input`
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   background-color: white;
-  flex: 1;
+  flex: 8;
 
   &::placeholder {
     color: #aaa;
@@ -60,6 +61,9 @@ const TodoFormInput = styled.input`
   }
 `;
 
-const SubmitButton = styled(ActionButton)``;
+const SubmitButton = styled(ActionButton)`
+  flex: 1;
+  text-align: center;
+`;
 
 export default TodoForm;
