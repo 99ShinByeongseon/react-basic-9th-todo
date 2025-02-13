@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { TodoContext } from "../../context/TodoContext";
+import { Link } from "react-router";
 
 /* eslint-disable react/prop-types */
 const TodoItem = ({ completed, text, id }) => {
@@ -8,19 +9,21 @@ const TodoItem = ({ completed, text, id }) => {
 
   return (
     <TodoItemWrapper>
-      <TodoItemText $completed={completed}>{text}</TodoItemText>
+      <TodoItemLink to={`/todos/${id}`} $completed={completed}>
+        {text}
+      </TodoItemLink>
 
       <TodoItemActions>
-        <ActionButton 
-        onClick={() => toggleTodoCompleted(id)} 
-        $bgColor={completed ? "#242424" : "#582be6"}
+        <ActionButton
+          onClick={() => toggleTodoCompleted(id)}
+          $bgColor={completed ? "#242424" : "#582be6"}
         >
           {completed ? "취소하기" : "완료하기"}
         </ActionButton>
 
         <ActionButton onClick={() => deleteTodo(id)} $bgColor="#ff4033">
           삭제하기
-          </ActionButton>
+        </ActionButton>
       </TodoItemActions>
     </TodoItemWrapper>
   );
@@ -39,10 +42,15 @@ const TodoItemWrapper = styled.li`
   gap: 1rem;
 `;
 
-const TodoItemText = styled.p`
+const TodoItemLink = styled(Link)`
   text-decoration: ${({ $completed }) =>
-  ($completed ? "line-through" : "none")};
-`
+    $completed ? "line-through" : "none"};
+
+    &:hover {
+      text-decoration: underline;
+    } 
+`;
+
 const TodoItemActions = styled.div`
   display: flex;
   flex-direction: row;
@@ -51,7 +59,7 @@ const TodoItemActions = styled.div`
 `;
 
 export const ActionButton = styled.button`
-  background-color: ${({ $bgColor = "#e6852b"}) => $bgColor};
+  background-color: ${({ $bgColor = "#e6852b" }) => $bgColor};
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -63,6 +71,5 @@ export const ActionButton = styled.button`
     opacity: 0.8;
   }
 `;
-
 
 export default TodoItem;
