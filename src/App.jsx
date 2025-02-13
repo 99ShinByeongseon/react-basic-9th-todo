@@ -1,21 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import RootLayout from "./components/layout/RootLayout";
-import TodoProvider from "./components/provider/TodoProvider";
-import TodoContainer from "./components/todo/TodoContainer";
+import HomePage from "./pages/HomePage";
+import TodoDetailPage from "./pages/TodoDetailPage";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<RootLayout />}>
-          <Route
-            index
-            element={
-              <TodoProvider>
-                <TodoContainer />
-              </TodoProvider>
-            }
-          />
+          <Route index element={<HomePage />} />
+          <Route path="todos/:id" element={<TodoDetailPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
