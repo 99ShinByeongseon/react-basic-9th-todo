@@ -77,7 +77,7 @@ const TodoDashboardCard = styled.button`
   flex-direction: column;
   width: 100%;
   height: 184px;
-  background-color: ${({$bgColor = '#e6582b'}) => $bgColor};
+  background-color: ${({$bgColor = 'rgb(230, 88, 43)'}) => $bgColor};
   justify-content: space-between;
   color: white;
   padding: 1.25rem;

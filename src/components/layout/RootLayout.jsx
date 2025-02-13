@@ -1,9 +1,12 @@
+import { Outlet } from "react-router";
 import styled from "styled-components";
 
-const RootLayout = ({ children }) => {
+const RootLayout = () => {
   return (
     <MainContainer>
-      <MainContent> {children} </MainContent>
+      <MainContent> 
+        <Outlet />
+      </MainContent>
     </MainContainer>
   );
 };
