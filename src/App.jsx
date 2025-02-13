@@ -6,16 +6,16 @@ import TodoProvider from "./components/provider/TodoProvider";
 
 const App = () => {
   return (
-    <TodoProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <TodoProvider>
         <Routes>
           <Route path="/" element={<RootLayout />}>
             <Route index element={<HomePage />} />
             <Route path="todos/:id" element={<TodoDetailPage />} />
           </Route>
         </Routes>
-      </BrowserRouter>
-    </TodoProvider>
+      </TodoProvider>
+    </BrowserRouter>
   );
 };
 

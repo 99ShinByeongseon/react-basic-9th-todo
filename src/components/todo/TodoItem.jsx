@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { TodoContext } from "../../context/TodoContext";
 import { Link } from "react-router";
 
-/* eslint-disable react/prop-types */
 const TodoItem = ({ completed, text, id }) => {
   const { toggleTodoCompleted, deleteTodo } = useContext(TodoContext);
 
@@ -46,9 +45,9 @@ const TodoItemLink = styled(Link)`
   text-decoration: ${({ $completed }) =>
     $completed ? "line-through" : "none"};
 
-    &:hover {
-      text-decoration: underline;
-    } 
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const TodoItemActions = styled.div`

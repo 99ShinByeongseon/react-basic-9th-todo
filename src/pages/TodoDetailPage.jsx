@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router";
 import { SAMPLE_TODOS } from "../constants/sample-todos";
 import TodoItem, { ActionButton } from "../components/todo/TodoItem";
-import styled from "styled-components";
 
 const TodoDetailPage = () => {
   const { id } = useParams();
