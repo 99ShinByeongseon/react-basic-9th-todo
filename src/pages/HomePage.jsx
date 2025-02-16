@@ -1,7 +1,12 @@
-import TodoContainer from "../components/provider/TodoProvider"
+import TodoProvider from "../components/provider/TodoProvider";
+import TodoContainer from "../components/todo/TodoContainer";
 
 const HomePage = () => {
-    return <TodoContainer />;
+    return (
+        <TodoProvider>
+            <TodoContainer />
+        </TodoProvider>
+    );
 };
 
 export default HomePage;
