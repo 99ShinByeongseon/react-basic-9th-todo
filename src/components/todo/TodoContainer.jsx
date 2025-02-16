@@ -4,12 +4,11 @@ import TodoDashboard from "./TodoDachboard";
 import styled from "styled-components";
 
 const TodoContainer = () => {
-
   return (
     <TodoContainerWrapper>
       <TodoDashboard />
-      <TodoList/>
-      <TodoForm/>
+      <TodoForm />
+      <TodoList />
     </TodoContainerWrapper>
   );
 };
