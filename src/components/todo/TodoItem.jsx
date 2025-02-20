@@ -21,7 +21,7 @@ const TodoItem = ({ completed, text, id }) => {
 
       <TodoItemActions>
         <ActionButton
-          onClick={() => toggleTodoCompleted(id)}
+          onClick={() => toggleTodoCompleted(id, completed)}
           $bgColor={completed ? "#242424" : "#582be6"}
         >
           {completed ? "취소하기" : "완료하기"}
