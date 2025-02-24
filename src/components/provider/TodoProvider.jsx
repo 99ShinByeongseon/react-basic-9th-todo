@@ -11,6 +11,12 @@ const TodoProvider = ({ children }) => {
     setTodos(data);
   }
 
+  const getTodoItem = async (id) => {
+    const { data } = await todoClient.get(`/${id}`);
+
+    return data;
+  };
+
   const addTodos = async (text) => {
     const { data } = await todoClient.post("/", {
       text,
@@ -63,6 +69,7 @@ const TodoProvider = ({ children }) => {
   <TodoContext.Provider
     value={{
       todos,
+      getTodoItem,
       addTodos,
       toggleTodoCompleted,
       deleteTodo,
