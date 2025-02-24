@@ -1,5 +1,5 @@
-import axios from "axios";
+// import axios from "axios";
 
-export const todoClient = axios.create({
-    baseURL: "http://localhost:3000/todos",
-});
+// export const todoClient = axios.create({
+//     baseURL: "http://localhost:3000/todos",
+// });
