@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tan";
 import { Link, useNavigate } from "react-router";
 import styled from "styled-components";
 import { deleteTodo, toggleTodoCompleted } from "../../api/todo-api";
@@ -22,7 +22,7 @@ const TodoItem = ({ completed, text, id }) => {
   });
 
   const navigateAfterDelete = (id) => {
-    deleteTodo(id);
+    deleteTodoMutate(id);
 
     navigate("/");
   };
@@ -35,7 +35,7 @@ const TodoItem = ({ completed, text, id }) => {
 
       <TodoItemActions>
         <ActionButton
-          onClick={() => toggleTodoCompleted({id, completed})}
+          onClick={() => toggleTodoMutate({id, completed})}
           $bgColor={completed ? "#242424" : "#582be6"}
         >
           {completed ? "취소하기" : "완료하기"}

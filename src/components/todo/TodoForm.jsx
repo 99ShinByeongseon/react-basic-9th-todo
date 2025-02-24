@@ -23,7 +23,7 @@ const TodoForm = () => {
       return;
     }
 
-    addTodos(todoText);
+    addTodoMutate(todoText);
 
     setTodoText("");
   };
