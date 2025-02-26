@@ -1,27 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
 import { FileCheck, LaptopMinimal, Video } from "lucide-react";
-import { Link, useSearchParams } from "react-router";
+import { Link } from "react-router";
 import styled from "styled-components";
-import { getTodos } from "../../api/todo-api";
+import { useFilterParams } from "../../hooks/useFilterParams";
+import { useTodoQuery } from "../../hooks/useTodoQuery";
 
 const TodoDashboard = () => {
-  const [searchParams] = useSearchParams();
-  const selectedFilter = searchParams.get("filter");
+  const selectedFilter = useFilterParams();
 
-  const { data: all } = useQuery({
-    queryKey: ["todos"],
-    queryfn: () => getTodos(),
-  });
-
-  const { data: completed } = useQuery({
-    queryKey: ["todos", "completed"],
-    queryFn: () => getTodos("completed"),
-  });
-
-  const { data: pending } = useQuery({
-    queryKey: ["todos", "pending"],
-    queryFn: () => getTodos("pending"),
-  });
+  const { data: all } = useTodoQuery();
+  const { data: completed } = useTodoQuery("completed");
+  const { data: pending } = useTodoQuery("pending");
   
   return (
     <TodoDashboardSection>
