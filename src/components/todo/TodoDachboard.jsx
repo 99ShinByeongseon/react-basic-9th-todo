@@ -13,10 +13,15 @@ const TodoDashboard = () => {
     queryfn: () => getTodos(),
   });
 
+  const { data: completed } = useQuery({
+    queryKey: ["todos", "completed"],
+    queryFn: () => getTodos("completed"),
+  });
 
-  const all = getfilteredTodos().length;
-  const completed = getfilteredTodos("completed").length;
-  const pending = all - completed;
+  const { data: pending } = useQuery({
+    queryKey: ["todos", "pending"],
+    queryFn: () => getTodos("pending"),
+  });
   
   return (
     <TodoDashboardSection>
@@ -29,7 +34,7 @@ const TodoDashboard = () => {
               <FileCheck />
             </div>
             <TodoDashboardCardContent>
-              {all} <br /> <span>All Tasks</span>
+              {all?.length} <br /> <span>All Tasks</span>
             </TodoDashboardCardContent>
           </TodoDashboardCard>
         </TodoDashboardCardWrapper>
@@ -57,7 +62,7 @@ const TodoDashboard = () => {
                 <Video />
             </div>
             <TodoDashboardCardContent>
-              {pending} <br /> <span>Pending Tasks</span>
+              {pending?.length} <br /> <span>Pending Tasks</span>
             </TodoDashboardCardContent>
           </TodoDashboardCard>
         </TodoDashboardCardWrapper>
