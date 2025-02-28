@@ -1,4 +1,5 @@
 import { Outlet } from "react-router";
+import ThemeSwitchButton from "../ThemeSwitchButton";
 
 // Compositional Layout
 const RootLayout = () => {
@@ -7,6 +8,8 @@ const RootLayout = () => {
       <div className="max-w-3xl mx-auto p-4">
         <Outlet />
       </div>
+
+      <ThemeSwitchButton />
     </main>
   );
 };
