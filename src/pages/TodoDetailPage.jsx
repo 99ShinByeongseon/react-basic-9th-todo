@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router";
-import styled from "styled-components";
 import { getTodoItem } from "../api/todo-api";
-import TodoItem, { ActionButton } from "../components/todo/TodoItem";
+import TodoItem from "../components/todo/TodoItem";
 
 const TodoDetailPage = () => {
   const { id } = useParams();
@@ -12,7 +11,7 @@ const TodoDetailPage = () => {
     error,
   } = useQuery({
     queryKey: ["todos", id],
-    queryFn: getTodoItem,
+    queryFn: () => getTodoItem(id),
   });
 
   if (isLoading) {
@@ -24,7 +23,7 @@ const TodoDetailPage = () => {
   }
 
   return (
-    <DetailPageWrapper>
+    <section className="flex flex-col gap-4">
       {todoItem ? (
       <TodoItem
         id={todoItem.id}
@@ -35,25 +34,13 @@ const TodoDetailPage = () => {
         <p>해당하는 데이터를 찾을 수 없습니다.</p>
       )}
 
-      <BackLink to="/">
-        <ActionButton $bgColor="#242424">돌아가기</ActionButton>
-      </BackLink>
-    </DetailPageWrapper>
+      <Link to="/" className="flex-1">
+      <button className="w-full text-center bg-[#242424] text-white py-2 px-4 rounded-lg hover:opacity-80">
+        돌아가기
+        </button>
+        </Link>
+        </section>
   );
 };
-
-const DetailPageWrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const BackLink = styled(Link)`
-  flex: 1;
-
-  button {
-    width: 100%;
-  }
-`;
 
 export default TodoDetailPage;
