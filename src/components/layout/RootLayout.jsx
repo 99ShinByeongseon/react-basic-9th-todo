@@ -1,5 +1,4 @@
 import { Outlet } from "react-router";
-import ThemeSwitchButton from "../ThemeSwitchButton";
 
 // Compositional Layout
 const RootLayout = () => {
