@@ -1,5 +1,6 @@
 import { Outlet } from "react-router";
 import ThemeSwitchButton from "../ThemeSwitchButton";
+import Toaster from "../Toaster";
 
 // Compositional Layout
 const RootLayout = () => {
@@ -10,6 +11,7 @@ const RootLayout = () => {
       </div>
 
       <ThemeSwitchButton />
+      <Toaster />
     </main>
   );
 };
