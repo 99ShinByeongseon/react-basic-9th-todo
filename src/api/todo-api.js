@@ -20,6 +20,24 @@ export const getTodos = async (filter) => {
     return data;
 };
 
+
+export const addTodos = async (text) => {
+    const { data } = await todoClient.post("/", {
+        text,
+        completed : false, 
+    });
+
+    return data;
+};
+
+export const toggleTodoCompleted = async (id, currentCompleted) => {
+    const { data } = await todoClient.patch(`/${id}`, {
+        completed : !currentCompleted,
+    });
+
+    return data;
+};
+
 export const deleteTodo = async (id) => {
     const { data } = await todoClient.delete(`/${id}`);
 

@@ -6,7 +6,7 @@ const Toaster = () => {
   const [parent] = useAutoAnimate();
 
   return (
-    // 부모로 css 이동동
+    // 부모로 css 이동
     <div className="fixed top-4 left-1/2 -translate-x-1/2 z-40 w-80">
       <ul ref={parent} className="space-y-2">
         {toasts.map((toast) => (
