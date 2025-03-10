@@ -4,13 +4,19 @@ import {
   useToggleTodoMutation,
 } from "../../hooks/useTodoQuery";
 
-const TodoItem = ({ completed, text, id }) => {
+interface TodoItemProps {
+  id: string,
+  completed: boolean,
+  text: string,
+}
+
+const TodoItem = ({ completed, text, id }: TodoItemProps) => {
   const navigate = useNavigate();
 
   const { mutate: toggleTodoMutate } = useToggleTodoMutation();
   const { mutate: deleteTodoMutate } = useDeleteTodoMutation();
 
-  const navigateAfterDelete = (id) => {
+  const navigateAfterDelete = (id: string) => {
     deleteTodoMutate(id);
 
     navigate("/");

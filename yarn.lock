@@ -198,6 +198,11 @@
     "@eslint/core" "^0.12.0"
     levn "^0.4.1"
 
+"@formkit/auto-animate@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@formkit/auto-animate/-/auto-animate-0.8.2.tgz#24a56e816159fd5585405dcee6bb992f81c27585"
+  integrity sha512-SwPWfeRa5veb1hOIBMdzI+73te5puUBHmqqaF1Bu7FjvxlYSz/kJcZKSa9Cg60zL0uRNeJL2SbRxV6Jp6Q1nFQ==
+
 "@humanfs/core@^0.19.1":
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/@humanfs/core/-/core-0.19.1.tgz#17c55ca7d426733fe3c561906b8173c336b40a77"
@@ -1393,6 +1398,11 @@ lru-cache@^10.2.0:
   version "10.4.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.4.3.tgz#410fc8a17b70e598013df257c2446b7f3383f119"
   integrity sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==
+
+lucide-react@^0.479.0:
+  version "0.479.0"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.479.0.tgz#7321f979a389ec5dd86747b2deb6444cf0922f8d"
+  integrity sha512-aBhNnveRhorBOK7uA4gDjgaf+YlHMdMhQ/3cupk6exM10hWlEU+2QtWYOfhXhjAsmdb6LeKR+NZnow4UxRRiTQ==
 
 math-intrinsics@^1.1.0:
   version "1.1.0"

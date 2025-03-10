@@ -19,7 +19,7 @@ const TodoDetailPage = () => {
   }
 
   if (error) {
-    return <div>Error fetching todo item - {error}</div>;
+    return <div>Error fetching todo item - {error.message}</div>;
   }
 
   return (

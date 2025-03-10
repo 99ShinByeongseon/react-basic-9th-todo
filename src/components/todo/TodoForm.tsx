@@ -5,9 +5,9 @@ const TodoForm = () => {
   const { mutate: addTodoMutate } = useAddTodoMutation();
 
   const [todoText, setTodoText] = useState("");
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!todoText.trim()) {
@@ -19,12 +19,12 @@ const TodoForm = () => {
     setTodoText("");
   };
 
-  const handleChangeTodoText = (e) => {
+  const handleChangeTodoText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoText(e.target.value);
   };
 
   useEffect(() => {
-    inputRef.current.focus();
+    inputRef.current?.focus();
   }, []);
 
   return (

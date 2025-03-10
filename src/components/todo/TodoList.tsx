@@ -1,3 +1,4 @@
+import { Todo } from "../../api/todo-api";
 import { useFilterParams } from "../../hooks/useFilterParams";
 import { useTodoQuery } from "../../hooks/useTodoQuery";
 import TodoItem from "./TodoItem";
@@ -11,7 +12,7 @@ const TodoList = () => {
       <h2 className="text-2xl font-bold">Tasks</h2>
 
       <ul className="flex flex-col gap-4">
-        {todos?.map(({ id, text, completed }) => (
+        {todos?.map(({ id, text, completed }: Todo) => (
           <TodoItem key={id} completed={completed} text={text} id={id} />
         ))}
       </ul>

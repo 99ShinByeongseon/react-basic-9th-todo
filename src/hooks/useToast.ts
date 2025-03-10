@@ -1,13 +1,26 @@
 import { create } from "zustand";
+import { combine } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
+interface Toast {
+  id: string;
+  message: string;
+}
+
+interface InitailState {
+  toasts: Toast[];
+}
+
+const initialState: InitailState = {
+  toasts: [],
+}
+
 export const useToast = create(
-  immer((set, get) => ({
-    toasts: [],
-    addToast: (message) => {
+  immer(combine(initialState, (set) =>{
+
+    const addToast = (message: Toast['message']) => {
       set((prevState) => {
         const id = crypto.randomUUID();
-        const { removeToast } = get();
 
         prevState.toasts.push({
           id,
@@ -18,17 +31,24 @@ export const useToast = create(
           removeToast(id);
         }, 3000);
       });
-    },
-    removeToast: (toastId) => {
+    }
+
+    const removeToast = (toastId: Toast['id']) => {
       set((prevState) => {
         const targetIndex = prevState.toasts.findIndex(
-          (prevToast) => prevToast.id === toastId
+          (prevToast: Toast) => prevToast.id === toastId
         );
 
         if (targetIndex !== -1) {
           prevState.toasts.splice(targetIndex, 1);
         }
       });
-    },
-  }))
+    }
+
+    return ({
+      addToast,
+      removeToast,
+    })
+  })
+)
 );
