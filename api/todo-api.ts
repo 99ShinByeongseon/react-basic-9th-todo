@@ -1,8 +1,51 @@
 import { Todo } from "@/types/todo.type";
 
-export const getTodos = async () => {
-    const response = await fetch("http://localhost:3000/todos");
-    const data: Todo[] = await response.json();
+const BASE_URL = "http://localhost:3000/todos";
 
-    return data;
+export const getTodos = async () => {
+  const response = await fetch(BASE_URL);
+  const data: Todo[] = await response.json();
+
+  return data;
+};
+
+export const createTodo = async (text: string) => {
+  const response = await fetch(BASE_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ text, completed: false }),
+  });
+
+  const data: Todo = await response.json();
+
+  return data;
+};
+
+export const deleteTodo = async (id: Todo["id"]) => {
+  const response = await fetch(`${BASE_URL}/${id}`, {
+    method: "DELETE",
+  });
+
+  const data: Todo = await response.json();
+
+  return data;
+};
+
+export const toggleTodoCompleted = async (
+  id: Todo["id"],
+  completed: Todo["completed"]
+) => {
+  const response = await fetch(`${BASE_URL}/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Context-Type": "application/json",
+    },
+    body: JSON.stringify({ completed }),
+  });
+
+  const data: Todo = await response.json();
+
+  return data;
 };
