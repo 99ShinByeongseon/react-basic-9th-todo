@@ -31,11 +31,6 @@
       "completed": false
     },
     {
-      "id": "8",
-      "text": "Read a book",
-      "completed": false
-    },
-    {
       "id": "9",
       "text": "Do laundry",
       "completed": false
@@ -49,6 +44,11 @@
       "id": "7085",
       "text": "123",
       "completed": true
+    },
+    {
+      "id": "ce37",
+      "text": "라멘",
+      "completed": false
     }
   ]
 }
