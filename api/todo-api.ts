@@ -16,6 +16,18 @@ export const getTodos = async () => {
   return data;
 };
 
+export const getTodoItem = async (id: Todo["id"]) => {
+  const response = await fetch(`${BASE_URL}/${id}`, {
+    next: {
+      tags: ["todo", id],
+    },
+  });
+
+  const data: Todo = await response.json();
+
+  return data;
+};
+
 export const createTodo = async (text: string) => {
   const response = await fetch(BASE_URL, {
     method: "POST",
