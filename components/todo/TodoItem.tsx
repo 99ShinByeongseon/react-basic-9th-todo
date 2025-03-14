@@ -13,7 +13,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
   const { completed, id, text } = todo;
 
   return (
-    <article>
+    <div>
       <Link href={`/${id}`}>
       <h2>{text}</h2>
       </Link>
@@ -25,7 +25,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
         </button>
         <button onClick={() => deleteTodo(id)}>삭제하기</button>
       </div>
-    </article>
+    </div>
   );
 };
 
