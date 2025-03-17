@@ -16,24 +16,25 @@ const TodoItem = ({ todo }: TodoItemProps) => {
 
   return (
     <article className="flext flex-row items-center justify-between p-4 rounded-md border">
-      <Link 
-      href={`/${id}`} 
-      className={cn("hover:underline", {
-        "line-through": completed,
-      })}
+      <Link
+        href={`/${id}`}
+        className={cn("hover:underline", {
+          "line-through": completed,
+        })}
       >
-      <h2>{text}</h2>
+        <h2>{text}</h2>
       </Link>
 
       <div className="space-x-2">
-        <Button onClick={() => toggleTodoCompleted(id, !completed)} 
-        variant="outline"
+        <Button
+          onClick={() => toggleTodoCompleted(id, !completed)}
+          variant="outline"
         >
           {completed ? "취소" : "완료"}
         </Button>
         <Button onClick={() => deleteTodo(id)} variant="destructive">
           삭제
-          </Button>
+        </Button>
       </div>
     </article>
   );

@@ -19,7 +19,9 @@ const TodoFrom = () => {
   };
 
   return (
-    <form onSubmit={onSubmit} className="flex w-full items-center space-x-2 bg-gray-100 p-3 rounded-md">
+    <form onSubmit={onSubmit} 
+    className="flex w-full items-center space-x-2 bg-gray-100 p-3 rounded-md"
+    >
       <Input
         type="text"
         name="todo-text"
