@@ -1,11 +1,12 @@
 "use client";
 
-import { createTodo } from "@/api/todo-api";
+import { useCreateTodoMutation } from "@/query/useTodoMutation";
 import { FormEvent } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
 const TodoFrom = () => {
+  const { mutateAsync: createTodo } = useCreateTodoMutation();
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -19,8 +20,9 @@ const TodoFrom = () => {
   };
 
   return (
-    <form onSubmit={onSubmit} 
-    className="flex w-full items-center space-x-2 bg-gray-100 p-3 rounded-md"
+    <form
+      onSubmit={onSubmit}
+      className="flex w-full items-center space-x-2 bg-gray-100 p-3 rounded-md"
     >
       <Input
         type="text"
