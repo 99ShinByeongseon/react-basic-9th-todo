@@ -1,17 +1,18 @@
 "use client";
 
-import { toggleTodoCompleted } from "@/api/todo-api";
 import { cn } from "@/lib/utils";
 import { Todo } from "@/types/todo.type";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import TodoDeleteButton from "./TodoDeleteButton";
+import { useToggleTodoMutation } from "@/query/useTodoMutation";
 
 interface TodoItemProps {
   todo: Todo;
 }
 
 const TodoItem = ({ todo }: TodoItemProps) => {
+  const { mutate: toggleTodoCompleted } = useToggleTodoMutation();
   const { completed, id, text } = todo;
 
   return (
@@ -27,7 +28,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
 
       <div className="space-x-2">
         <Button
-          onClick={() => toggleTodoCompleted(id, !completed)}
+          onClick={() => toggleTodoCompleted({id, completed: !completed})}
           variant="outline"
         >
           {completed ? "취소" : "완료"}
