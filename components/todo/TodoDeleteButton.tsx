@@ -1,20 +1,24 @@
-import { deleteTodo } from "@/api/todo-api";
+"use client";
+
 import {
   AlertDialog,
   AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
 import { Button } from "../ui/button";
+import { useDeleteTodoMutation } from "@/query/useTodoMutation";
 
 interface TodoDeleteButtonProps {
   id: string;
 }
 
 const TodoDeleteButton = ({ id }: TodoDeleteButtonProps) => {
+  const { mutate: deleteTodo } = useDeleteTodoMutation();
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -23,6 +27,7 @@ const TodoDeleteButton = ({ id }: TodoDeleteButtonProps) => {
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>정말로 삭제하시겠습니까?</AlertDialogTitle>
+          <AlertDialogDescription className="hidden"></AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>취소</AlertDialogCancel>

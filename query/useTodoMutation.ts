@@ -15,21 +15,34 @@ export const useCreateTodoMutation = () => {
   });
 };
 
+export const useDeleteTodoMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: deleteTodo,
+    onSettled: async () => {
+      return await queryClient.invalidateQueries({
+        queryKey: ["todos"],
+      });
+    },
+  });
+};
+
 interface ToggleTodoMutationParams {
-    id: Todo["id"];
-    completed: Todo["completed"];
+  id: Todo["id"];
+  completed: Todo["completed"];
 }
 
 export const useToggleTodoMutation = () => {
-    const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
-    return useMutation({
-        mutationFn: ({ id, completed }: ToggleTodoMutationParams) =>
-            toggleTodoCompleted(id, completed),
-        onSettled: async () => {
-            return await queryClient.invalidateQueries({
-                queryKey: ["todos"],
-            });
-        },
-    });
+  return useMutation({
+    mutationFn: ({ id, completed }: ToggleTodoMutationParams) =>
+      toggleTodoCompleted(id, completed),
+    onSettled: async () => {
+      return await queryClient.invalidateQueries({
+        queryKey: ["todos"],
+      });
+    },
+  });
 };
