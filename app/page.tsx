@@ -1,4 +1,5 @@
 import { getTodos } from "@/api/todo-api";
+import TodoFilterSwitch from "@/components/todo/TodoFilterSwitch";
 import TodoFrom from "@/components/todo/TodoFrom";
 import TodoList from "@/components/todo/TodoList";
 import {
@@ -21,6 +22,9 @@ const HomePage = async () => {
       <section>
         <div className="container p-2 mx-auto space-y-4">
           <TodoFrom />
+          <div className="flex flex-row justify-end">
+            <TodoFilterSwitch />
+          </div>
           <TodoList />
         </div>
       </section>
