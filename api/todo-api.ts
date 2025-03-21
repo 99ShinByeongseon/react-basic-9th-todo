@@ -1,12 +1,19 @@
+import { FilterType } from "@/store/useTodoFilterStore";
 import { Todo } from "@/types/todo.type";
 
 const BASE_URL = "http://localhost:3000/todos";
 
-export const getTodos = async () => {
-  const response = await fetch(BASE_URL, {
+export const getTodos = async (filter?: FilterType) => {
+  const url = new URL(BASE_URL);
+
+  if (filter === "completed") {
+    url.searchParams.set("completed", "true");
+  }
+
+  const response = await fetch(url.toString(), {
     next: {
-        tags: ["todos"],
-    }
+      tags: ["todos"],
+    },
   });
   const data: Todo[] = await response.json();
 

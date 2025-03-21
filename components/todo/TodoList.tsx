@@ -3,9 +3,11 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 import { useTodosQuery } from "@/query/useTodoQuery";
+import { useTodoFilterStore } from "@/store/useTodoFilterStore";
 
 const TodoList = () => {
-  const { data: todos } = useTodosQuery();
+  const { filter } = useTodoFilterStore();
+  const { data: todos } = useTodosQuery(filter);
 
   return (
     <ul className="space-y-2">
