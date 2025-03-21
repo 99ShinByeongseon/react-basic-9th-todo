@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { combine } from "zustand/middleware";
+import { combine, persist } from "zustand/middleware";
 
 export type FilterType = "all" | "completed";
 
@@ -12,7 +12,10 @@ const initialState: TodoFilterState = {
 };
 
 export const useTodoFilterStore = create(
-  combine(initialState, (set) => ({
-    setFilter: (filter: FilterType) => set({ filter }),
-  }))
+  persist(
+    combine(initialState, (set) => ({
+      setFilter: (filter: FilterType) => set({ filter }),
+    })),
+    { name: "todo-filter-storage" }
+  )
 );
